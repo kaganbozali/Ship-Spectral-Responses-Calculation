@@ -97,41 +97,6 @@ RMS_5_var[0]=h_5_var[0]
 RMS_5_var[1:100]=list(h_5_var[1:100]*delta_w)
 RMS_5_val_var=np.sqrt(np.sum(RMS_5_var))
 
-# %% ACCELERATION AT GG
-k_r = 0.39*B_r
-T_roll = 2.3*np.pi*k_r / np.sqrt(g*GM)
-f_bk = 1 # Ship with bilge keel
-f_ps = 0.8
-f_r = 1
-f_t = 0.5
-f_p_roll = f_r * (0.23-(4*f_t*B_r*10**-4))
-teta_roll = 9000* (1.4-0.035*T_roll)*f_p_roll*f_bk / ((1.15*B_r+55)*np.pi)
-a_0 = (1.58 - 0.47*Cb)*((2.4/np.sqrt(L_r))+(34/L_r)-(600/L_r**2))
-f_p_heave = f_r * ((0.27+ 0.02*f_t)-17*L_r*10**-5)
-a_heave=(1.15-(6.5/np.sqrt(g*L_r)))*f_p_heave*a_0*g
-a_roll = (f_p_roll *teta_roll*np.pi/180)*(2*np.pi/T_roll)**2
-f_p_pitch = f_r*((0.28-(5+6*f_t)*L_r*10**-5))
-lam_pitch = 0.6*(1+f_t)*L_r
-T_pitch = np.sqrt(2*np.pi*lam_pitch/g)
-a_pitch = f_p_pitch*(1.75-(22/np.sqrt(g*L_r)))*RMS_5_val*np.pi/180*(2*np.pi/T_pitch)**2
-
-a_gg = m_we[4]*we*delta_we
-
-
-# %% ACCELERATION AT BOW
-# Vertical
-x = L_r / 2
-y = B_r/2
-a_pitch_z = a_pitch*(1.08*x-0.45*L_r)
-a_roll_z = a_roll * y
-a_vertical = (a_heave**2+((0.95+np.exp(-L_r/15)*a_pitch_z))**2+(1.2*a_roll_z)**2)**0.5
-# Lateral
-R = min(((D/4)+(T/2)),D/2)
-z = D / 2
-a_roll_y = a_roll * (z-R)
-a_lateral = (1-np.exp(-(B_r*L_r/213*GM)))*(((g*np.sin(np.pi/30))+a_roll_y)**2)**0.5
-
-
 # %%PLOTS
 plt.plot(w,we)
 plt.xlabel('W(rad/s)')
