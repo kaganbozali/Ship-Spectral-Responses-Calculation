@@ -1,1 +1,1 @@
-# Hwr3
+# Ship-Spectral-Responses-Calculation(Heave-Pitch)
