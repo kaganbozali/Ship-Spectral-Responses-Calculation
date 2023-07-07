@@ -1,5 +1,10 @@
 # Ship-Spectral-Responses-Calculation(Heave-Pitch)
 
+In order to run the code, first you need to satisfy the prerequisites library in Python.
+
+**Prerequisite Library for Tool:**
+- Tkinter
+- PIL
 
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/59c83d18-c1a1-4aeb-ab90-9904ca15f10b)
@@ -16,4 +21,4 @@ Fig 3. Interpolation of Results
 Fig 4. Heave and Pitch Graphs
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/0b0a5139-9932-45a0-a9d1-65146de8004d)
-Fig 5. Polar Plot for Different Heading Angle
+Fig 5. Polar Plot for Different Heading Angles
