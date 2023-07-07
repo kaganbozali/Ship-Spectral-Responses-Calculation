@@ -1,6 +1,7 @@
 # Ship-Spectral-Responses-Calculation(Heave-Pitch)
 
-In order to run the code, first you need to satisfy the prerequisites library in Python.
+In order to run the code, first you need to satisfy the prerequisites library in Python. Then you should clone the repository and unzip it. Afterward, you have to run the tool.py file in the Python notebook then the interface will come out. You suppose to see the screen in Figure-1.
+Everything you can calculate using the tool is given below in details.
 
 **Prerequisite Library for Tool:**
 - Tkinter
@@ -9,6 +10,7 @@ In order to run the code, first you need to satisfy the prerequisites library in
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/59c83d18-c1a1-4aeb-ab90-9904ca15f10b)
 Fig 1. General View of the System
+
 
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/b9285396-e713-4399-959e-c1578b13e08a)
