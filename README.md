@@ -1,20 +1,24 @@
 # Ship-Spectral-Responses-Calculation(Heave-Pitch)
 
-In order to run the code, first you need to satisfy the prerequisites library in Python. Then you should clone the repository and unzip it. Afterward, you have to run the tool.py file in the Python notebook then the interface will come out. You suppose to see the screen in Figure-1.
-Everything you can calculate using the tool is given below in details.
+In order to run the code, first you need to satisfy the libraries required for the program in Python. Then you should clone the repository and unzip it. Afterwards, you have to run the tool.py file in the Python notebook then the interface will come out. You suppose to see the screen in Figure-1.
+Everything you can calculate using the tool is given below in detail.
 
-**Prerequisite Library for Tool:**
+**Prerequisites:**
 - Tkinter
 - PIL
+
 
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/59c83d18-c1a1-4aeb-ab90-9904ca15f10b)
 Fig 1. General View of the System
 
-
+The program allows you to import your model test results .csv file. You should click load model test results on the left-hand side and when you import the file successfully you will able to see "CSV File processing completed." text in the console on the bottom.
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/b9285396-e713-4399-959e-c1578b13e08a)
+
 Fig 2. Kernel when you import Model Results
+
+Afterwards when you performed a model test probably you will not be able to perform it 200 times so in order to increase the convergence of the model test. RAO results that you imported as .csv file interpolated. In order to apply the tool you should put the desired number for interpolation to the interpolation size entry then you should click interpolate model test results button. At the end, you should able to see "Interpolation has complated" text in the console(Fig 3.)
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/3e7f144c-1405-4c42-9966-7c9dd38cf8bf)
 Fig 3. Interpolation of Results
