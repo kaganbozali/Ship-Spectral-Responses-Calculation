@@ -31,4 +31,4 @@ Fig 4. Heave and Pitch Graphs
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/0b0a5139-9932-45a0-a9d1-65146de8004d)
 Fig 5. Polar Plot for Different Heading Angles
 
-Additionally you can validate results, which calculates 4mo^0.5 values for spectre ehich corresponds to significant save height value approximately.
+Additionally you can validate results, which calculates 4mo^0.5 values for spectra which corresponds to significant wave height value approximately.
