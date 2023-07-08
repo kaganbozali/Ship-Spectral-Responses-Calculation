@@ -23,8 +23,12 @@ Afterwards when you performed a model test probably you will not be able to perf
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/3e7f144c-1405-4c42-9966-7c9dd38cf8bf)
 Fig 3. Interpolation of Results
 
+Then there are several options available which includes calculating heave, pitch and ship spectral values with spesific significant wave height and zero crossing period(Fig 4.) or you can choose polar plot option which includes RMS values for every heading angle. (Fig 5.)
+
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/45580b6d-8bfa-42e7-8981-34e8066d1297)
 Fig 4. Heave and Pitch Graphs
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/0b0a5139-9932-45a0-a9d1-65146de8004d)
 Fig 5. Polar Plot for Different Heading Angles
+
+Additionally you can validate results, which calculates 4mo^0.5 values for spectre ehich corresponds to significant save height value approximately.
