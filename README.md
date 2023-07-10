@@ -3,10 +3,10 @@
 In order to run the code, first you need to satisfy the libraries required for the program in Python. Then you should clone the repository and unzip it. Afterwards, you have to run the tool.py file in the Python notebook then the interface will come out. You suppose to see the screen in Figure-1.
 Everything you can calculate using the tool is given below in detail.
 
+
 **Prerequisites:**
 - Tkinter
 - PIL
-
 
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/59c83d18-c1a1-4aeb-ab90-9904ca15f10b)
