@@ -1,6 +1,6 @@
 # Ship-Spectral-Responses-Calculation(Heave-Pitch)
 
-In order to run the code, first you need to satisfy the libraries required for the program in Python. Then you should clone the repository and unzip it. Afterwards, you have to run the tool.py file in the Python notebook then the interface will come out. You suppose to see the screen in Figure-1.
+In order to run the code, first you need to satisfy the libraries required for the program in Python. Then you should clone the repository and unzip it. Afterwards, you have to run the tool.py file in the Python notebook then the interface will come out. You are supposed to see the screen in Figure 1.
 Everything you can calculate using the tool is given below in detail.
 
 
@@ -18,17 +18,18 @@ The program allows you to import your model test results .csv file. You should c
 
 Fig 2. Kernel when you import Model Results
 
-Afterwards when you performed a model test probably you will not be able to perform it 200 times so in order to increase the convergence of the model test. RAO results that you imported as .csv file interpolated. In order to apply the tool you should put the desired number for interpolation to the interpolation size entry then you should click interpolate model test results button. At the end, you should able to see "Interpolation has complated" text in the console(Fig 3.)
+Afterwards, when you perform a model test you will not be able to perform it 200 times so in order to increase the convergence of the model test. RAO results that you imported as .csv file interpolated. In order to apply the tool you should put the desired number for interpolation to the interpolation size entry then you should click the interpolate model test results button. In the end, you should able to see "Interpolation has complated" text in the console(Fig 3.)
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/3e7f144c-1405-4c42-9966-7c9dd38cf8bf)
 Fig 3. Interpolation of Results
 
-Then there are several options available which includes calculating heave, pitch and ship spectral values with spesific significant wave height and zero crossing period(Fig 4.) or you can choose polar plot option which includes RMS values for every heading angle. (Fig 5.)
+Then there are several options available which include calculating heave, pitch, and ship spectral values with specific significant wave height and zero crossing period(Fig 4.) or you can choose the polar plot option which includes RMS values for every heading angle. (Fig 5.)
 
 ![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/45580b6d-8bfa-42e7-8981-34e8066d1297)
 Fig 4. Heave and Pitch Graphs
 
-![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/0b0a5139-9932-45a0-a9d1-65146de8004d)
+
+![image](https://github.com/kaganbozali/Ship-Spectral-Responses-Calculation-Heave-Pitch-/assets/104154215/8158666f-16bd-49d0-abc9-f215b326a9e8)
 Fig 5. Polar Plot for Different Heading Angles
 
-Additionally you can validate results, which calculates 4mo^0.5 values for both wave and ship spectra which corresponds to significant wave height value approximately and you can also calculate your RMS values for spesific heading angle using calculate RMS button on the top.
+Additionally, you can validate results, which calculates 4mo^0.5 values for both wave and ship spectra which corresponds to significant wave height value approximately and you can also calculate your RMS values for specific heading angles using the calculate RMS button on the top.
