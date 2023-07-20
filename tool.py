@@ -45,7 +45,6 @@ class MyWindow:
 
         sys.stdout = ConsoleRedirector(self.console, 'stdout')
         sys.stderr = ConsoleRedirector(self.console, 'stderr')    
-        
 
         image_path = "icon_1.jpg"
         self.image = mpimg.imread(image_path)
@@ -73,27 +72,14 @@ class MyWindow:
         
         # Labels
         self.lbl1 = Label(win, text = 'L[m]',bg='white')
-#        self.lbl2 = Label(win, text = 'B[m]')
-#        self.lbl3 = Label(win, text = 'T[m]')
-#        self.lbl4 = Label(win, text = 'Cb')
-#        self.lbl5 = Label(win, text = 'Main Dimensions',bg='white')
-#        self.lbl6 = Label(win, text = 'GM[m]')
-#        self.lbl7 = Label(win, text = 'KG[m]')
-#        self.lbl8 = Label(win, text = 'Model Scale',bg='white')
         self.lbl14 = Label(win, text = 'Model Speed[m/s]',bg='white')
         self.lbl15 = Label(win, text= 'Heading Angle[deg]',bg='white')
-#        self.lbl9 = Label(win, text = 'Hydrostatic Values',bg='white')
         self.lbl10 = Label(win, text = 'Hs[m]',bg='white')
         self.lbl11 = Label(win, text = 'Tz[s]',bg='white')
         self.lbl12 = Label(win, text = 'Sea State',bg='white')
         self.lbl13 = Label(win,text = 'Interpolation Size',bg='white')
         # Entries
         self.t1=Entry(bd=1)
-#        self.t2=Entry()
-#        self.t3=Entry()
-#        self.t4=Entry()
-#        self.t6=Entry()
-#        self.t7=Entry()
         self.t8=Entry()
         self.t10=Entry()
         self.t11=Entry()
@@ -114,20 +100,6 @@ class MyWindow:
         # Label and Entries Position
         self.lbl1.place(x=9, y=60)
         self.t1.place(x=150, y=60)
-#        self.lbl2.place(x=60, y=75)
-#        self.t2.place(x=100, y=75)
-#        self.lbl3.place(x=60,y=100)
-#        self.t3.place(x=100,y=100)
-#        self.lbl4.place(x=60,y=125)
-#        self.t4.place(x=100,y=125)
-#        self.lbl5.place(x=120,y=30)
-#        self.t6.place(x=390,y=50)
-#        self.lbl6.place(x=260,y=50)
-#        self.t7.place(x=390,y=75)
-#        self.lbl7.place(x=260,y=75)
-#        self.t8.place(x=390,y=100)
-#        self.lbl8.place(x=260,y=100)        
-#        self.lbl9.place(x=360,y=30)
         self.t10.place(x=350,y=60)
         self.lbl10.place(x=300,y=60)
         self.t11.place(x=350,y=85)
@@ -237,12 +209,13 @@ class MyWindow:
         L_r = float(self.t1.get())
         V_m = float(self.t14.get())
         beta = float(self.t15.get())
+        beta = beta * np.pi / 180
         Hs = float(self.t10.get())
         Tz = float(self.t11.get())
-        beta = np.pi*beta/180
         g = 9.81
         lamda = L_r * x_1_new
         k = 2*np.pi / lamda
+        
         #ITTC Spectrum Calculation
         A= (123.8*Hs**2)/(Tz**4)
         B= 495/(Tz**4)
@@ -255,7 +228,6 @@ class MyWindow:
         S_we = S_ittc / d_w
         h_3 = S_we*x_2_new**2
         h_5 = S_we*x_3_new**2*k**2
-        
         
         fig_3 = plt.figure(figsize=(5,2), dpi= 100)
         plt.plot(w,we)
@@ -278,13 +250,12 @@ class MyWindow:
         
         fig_2 = plt.figure(figsize=(5,2),dpi=100)
         plt.plot(we,h_3,label='Heave')
-        plt.plot(we,h_5*1000,label='Pitch(scale=1000)')
+        plt.plot(we,h_5*1000,label='Pitch(Scale=1000)')
         plt.xlabel('Encounter Frequency')
         plt.legend()
         canvas = FigureCanvasTkAgg(fig_2, master=window)
         canvas.draw()
         canvas.get_tk_widget().place(x=880, y=490)
-        
         
     def validate(self):
         m = []
@@ -299,7 +270,6 @@ class MyWindow:
         c_2 = 4*(np.abs(m_we[0])**(0.5))
         print(c_2,"4 square root of m0 value for ship spectra")
         
-        
     def calc_rms(self):
 
         delta_we=[]
@@ -309,19 +279,19 @@ class MyWindow:
 
         RMS_3=np.zeros(n)
         RMS_3[0]=h_3[0]
-        RMS_3[1:n]=list(h_3[1:n]*delta_we)
-        RMS_3_val=np.sqrt(np.sum(RMS_3))
+        RMS_3[1:n]=list((h_3[1:n]*delta_we)**2)
+        RMS_3_val=np.sqrt(np.sum(RMS_3)/len(h_3))
         print('RMS3 = ', RMS_3_val)
 
         RMS_5=np.zeros(n)
         RMS_5[0]=h_5[0]
-        RMS_5[1:n]=list(h_5[1:n]*delta_we)
-        RMS_5_val=np.sqrt(np.sum(RMS_5))
+        RMS_5[1:n]=list((h_5[1:n]*delta_we)**2)
+        RMS_5_val=np.sqrt(np.sum(RMS_5)/len(h_5))
         print('RMS5 = ', RMS_5_val)
-
-    
+        
     def RMS_Head(self):
-        beta_new = np.array([0,30,60,90,120,150,180,210,240,270,300,330])
+        beta_new_deg = np.array([0,30,60,90,120,150,180,210,240,270,300,330,360])
+        beta_new = beta_new_deg * np.pi / 180
         we_new = []
         dw_new = []
         S_we_new = []
@@ -332,74 +302,63 @@ class MyWindow:
             we_new.append(w - ( (w**2/g) * V_m*np.cos(beta_new[i])))
             dw_new.append((1-(2*w*V_m*np.cos(beta_new[i])/g)))
             S_we_new.append(S_ittc / dw_new[i])
-            h_3_new.append(S_we[i]*x_2_new**2)
-            h_5_new.append(S_we[i]*x_3_new**2*k**2)
+            h_3_new.append(S_we_new[i]*x_2_new**2)
+            h_5_new.append(S_we_new[i]*x_3_new**2*k**2)
 
-
-        delta_we_new=[]
+        delta_we_new = []
         for j in range(len(beta_new)):
             for i in range(len(we_new[0])-1):
                 delta_we_new.append(we_new[j][i]-we_new[j][i+1])
         #delta_we_new = np.array(delta_we_new)
         delta_we_new = np.array_split(delta_we_new, len(beta_new))
 
-        
         RMS_3_new = np.zeros((len(beta_new), n))
         RMS_5_new = np.zeros((len(beta_new), n))
         RMS_3_polar = []
         RMS_5_polar = []
         
         for i in range(len(beta_new)):
-            print('Heading Angle:', beta_new[i])
+            print('Heading Angle:', beta_new_deg[i])
             RMS_3_new[i] = np.zeros(n)
             RMS_3_new[i][0] = (h_3_new[i][0])
-            RMS_3_new[i][1:n] = (list(h_3_new[i][1:n]*delta_we_new[i]))
-            RMS_3_val_new = (np.sqrt(np.sum(RMS_3_new[i])))
+            RMS_3_new[i][1:n] = list((h_3_new[i][1:n]*delta_we_new[i])**2)
+            RMS_3_val_new = (np.sqrt(np.sum(RMS_3_new[i])/len(h_3)))
             RMS_3_polar.append(RMS_3_val_new)
             print('RMS3 = ', RMS_3_val_new)
-            
+                        
             RMS_5_new[i] = np.zeros(n)
             RMS_5_new[i][0] = (h_5_new[i][0])
-            RMS_5_new[i][1:n] = (list(h_5_new[i][1:n]*delta_we_new[i]))
-            RMS_5_val_new = (np.sqrt(np.sum(RMS_5_new[i])))
-            RMS_5_polar.append(RMS_5_val_new*20)
+            RMS_5_new[i][1:n] = list((h_5_new[i][1:n]*delta_we_new[i])**2)
+            RMS_5_val_new = (np.sqrt(np.sum(RMS_5_new[i])/len(h_5)))
+            RMS_5_polar.append(RMS_5_val_new)
             print('RMS5 = ', RMS_5_val_new)
-
-        fig_4 = plt.figure(figsize=(4.5, 4.5), dpi=100)
+                    
+        # Polar Plot
+        fig_4 = plt.figure(figsize=(6.5, 6.5))
         ax = fig_4.add_subplot(111, polar=True)
-        
-        ax.set_theta_zero_location('E')
+        theta = beta_new    
+        ax.plot(theta, RMS_3_polar, label='RMS3',linewidth = 2.5)
+        ax.plot(theta, RMS_5_polar, label='RMS5', linewidth = 2.5)
+        ax.set_theta_zero_location('N')
         ax.set_theta_direction(1)
-        ax.set_rticks([])  
-
-        theta = np.deg2rad(beta_new)  # Convert beta_new to radians
-        ax.plot(theta, RMS_3_polar, 'o-', label='RMS3')
-        ax.plot(theta, RMS_5_polar, 'o-', label='RMS5(Scale = 20)')
-        
-        # Set x-ticks at theta positions for each heading angle
-        ax.set_xticks(theta)
-        ax.set_xticklabels(beta_new)
-        
-
-        ax.legend()
-        
-        # Display the plot in the interface
+        ax.set_rlabel_position(0)
+        ax.grid(True)
+        ax.set_xticks(np.radians([0, 45, 90, 135, 180, 225, 270, 315]))
+        ax.set_xticklabels(['0°', '45°', '90°', '135°', '180°', '225°', '270°', '315°'])    
+        ax.set_yticklabels([])    
+        ax.legend()    
+        plt.show()
+                
         canvas = FigureCanvasTkAgg(fig_4, master=self.win)
         canvas.draw()
-        canvas.get_tk_widget().place(x=350, y=120)
-        
-    
+        canvas.get_tk_widget().place(x=350, y=102)
+          
     def close_window(self):
         self.win.destroy()
     
     def minimize_window(self):
         self.win.iconify()
         
-    def animate(self):
-        self.canvas.move(self.ball, self.dx, 0)
-        self.win.after(100, self.animate)  # Update animation every 10 milliseconds
-
-
 class ConsoleRedirector:
     def __init__(self, console, tag):
         self.console = console
